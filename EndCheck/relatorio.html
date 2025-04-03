@@ -1,0 +1,58 @@
+
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Relatório de Testes de Endpoints</title>
+        <style>
+            body { font-family: Arial; background: #f9f9f9; padding: 20px; }
+            h1 { color: #444; }
+            table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+            th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+            th { background-color: #eee; }
+            .sucesso { background-color: #c8e6c9; } /* Verde claro */
+            .falha { background-color: #ffcdd2; }   /* Vermelho claro */
+        </style>
+    </head>
+    <body>
+        <h1>Relatório de Testes de Endpoints</h1>
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Método</th>
+                <th>URL</th>
+                <th>Esperado</th>
+                <th>Obtido</th>
+                <th>Resultado</th>
+            </tr>
+    
+        <tr class="sucesso">
+            <td>Google</td>
+            <td>GET</td>
+            <td>https://www.google.com</td>
+            <td>200</td>
+            <td>200</td>
+            <td>Sucesso</td>
+        </tr>
+        
+        <tr class="sucesso">
+            <td>Criar Post</td>
+            <td>POST</td>
+            <td>https://jsonplaceholder.typicode.com/posts</td>
+            <td>201</td>
+            <td>201</td>
+            <td>Sucesso</td>
+        </tr>
+        
+        <tr class="sucesso">
+            <td>Atualizar Post</td>
+            <td>PUT</td>
+            <td>https://jsonplaceholder.typicode.com/posts/1</td>
+            <td>200</td>
+            <td>200</td>
+            <td>Sucesso</td>
+        </tr>
+        
+        </table>
+    </body>
+    </html>
+    
