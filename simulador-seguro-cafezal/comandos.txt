@@ -1,0 +1,2 @@
+rodar os testes  py -m pytest test_simulador.py
+executar a simulação py simulador_custo.py
