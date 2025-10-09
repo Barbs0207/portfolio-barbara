@@ -1,0 +1,14 @@
+{
+  "Google": {
+    "status": 200,
+    "mensagem": "Status 200, esperado 200"
+  },
+  "Criar Post": {
+    "status": 201,
+    "mensagem": "Status 201, esperado 201"
+  },
+  "Atualizar Post": {
+    "status": 200,
+    "mensagem": "Status 200, esperado 200"
+  }
+}

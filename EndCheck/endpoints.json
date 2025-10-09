@@ -1,31 +1,51 @@
 [
-    {
-      "nome": "Google",
-      "url": "https://www.google.com",
-      "metodo": "GET",
+  {
+    "nome": "Google",
+    "url": "https://www.google.com",
+    "metodo": "GET",
+    "esperado": 200
+  },
+  {
+    "nome": "Criar Post",
+    "url": "https://jsonplaceholder.typicode.com/posts",
+    "metodo": "POST",
+    "esperado": 201,
+    "payload": {
+      "title": "Meu post de teste",
+      "body": "Conteúdo criado via EndCheck",
+      "userId": 7
+    },
+    "verificacao_extra": {
+      "tipo": "GET",
+      "url": "https://jsonplaceholder.typicode.com/posts/{{id}}",
       "esperado": 200
-    },
-    {
-      "nome": "Criar Post",
-      "url": "https://jsonplaceholder.typicode.com/posts",
-      "metodo": "POST",
-      "esperado": 201,
-      "payload": {
-        "title": "Meu post de teste",
-        "body": "Conteúdo criado via EndCheck",
-        "userId": 7
-      }
-    },
-    {
-      "nome": "Atualizar Post",
-      "url": "https://jsonplaceholder.typicode.com/posts/1",
-      "metodo": "PUT",
-      "esperado": 200,
-      "payload": {
-        "title": "Post atualizado",
-        "body": "Alterado ",
-        "userId": 7
-      }
     }
-  ]
-  
+  },
+  {
+    "nome": "Atualizar Post",
+    "url": "https://jsonplaceholder.typicode.com/posts/1",
+    "metodo": "PUT",
+    "esperado": 200,
+    "payload": {
+      "title": "Post atualizado",
+      "body": "Alterado",
+      "userId": 7
+    }
+  },
+  {
+    "nome": "Criar Post Pytest",
+    "url": "https://jsonplaceholder.typicode.com/posts",
+    "metodo": "POST",
+    "esperado": 201,
+    "payload": {
+      "title": "Teste Pytest",
+      "body": "Esse é um post de teste com pytest",
+      "userId": 42
+    },
+    "verificacao_extra": {
+      "tipo": "GET",
+      "url": "https://jsonplaceholder.typicode.com/posts/{{id}}",
+      "esperado": 200
+    }
+  }
+]

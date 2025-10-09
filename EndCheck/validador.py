@@ -1,108 +1,68 @@
 import requests
-import json
 
-# 📂 Carrega os endpoints do arquivo JSON
-with open("endpoints.json", "r", encoding="utf-8") as f:
-    dados = json.load(f)
-
-resultados = []
-
-# 🧪 Executa os testes
 def executar_endpoint(endpoint):
-    nome = endpoint["nome"]
-    url = endpoint["url"]
+    nome = endpoint.get("nome", "Sem nome")
+    url = endpoint.get("url")
     metodo = endpoint.get("metodo", "GET").upper()
     esperado = endpoint.get("esperado", 200)
-    payload = endpoint.get("payload")
+    payload = endpoint.get("payload", {})
 
     try:
-        if metodo == "POST":
-            resposta = requests.post(url, json=payload)
-        elif metodo == "PUT":
-            resposta = requests.put(url, json=payload)
-        elif metodo == "DELETE":
-            resposta = requests.delete(url)
-        else:
-            resposta = requests.get(url)
+        resposta = requests.request(metodo, url, json=payload)
+        status_obtido = resposta.status_code
+        sucesso = status_obtido == esperado
 
-        status_code = resposta.status_code
-        sucesso = status_code == esperado
+        resultado = {
+            "nome": nome,
+            "sucesso": sucesso,
+            "mensagem": f"Status {status_obtido}, esperado {esperado}",
+            "obtido": status_obtido,
+            "esperado": esperado,
+            "comparacao": f"{status_obtido} → {esperado}",
+            "verificacao_extra": None
+        }
+
+        # Tentativa de extração do ID, se houver
+        id_gerado = None
+        try:
+            resposta_json = resposta.json()
+            if isinstance(resposta_json, dict):
+                id_gerado = resposta_json.get("id")
+        except Exception:
+            pass  # ignora erro ao tentar ler JSON
+
+        # Verificação extra, se existir
+        if "verificacao_extra" in endpoint:
+            extra = endpoint["verificacao_extra"]
+            extra_url = extra.get("url")
+            extra_metodo = extra.get("tipo", "GET").upper()
+            extra_esperado = extra.get("esperado", 200)
+
+            # Substituir {{id}} na URL da verificação
+            if id_gerado is not None and "{{id}}" in extra_url:
+                extra_url = extra_url.replace("{{id}}", str(id_gerado))
+
+            try:
+                extra_resposta = requests.request(extra_metodo, extra_url)
+                extra_status = extra_resposta.status_code
+
+                if extra_status == extra_esperado:
+                    resultado["verificacao_extra"] = f"✅ {extra_status} = {extra_esperado}"
+                else:
+                    resultado["verificacao_extra"] = f"❌ {extra_status} ≠ {extra_esperado}"
+
+            except Exception as e:
+                resultado["verificacao_extra"] = f"❌ Erro: {str(e)}"
+
+        return resultado
 
     except Exception as e:
-        status_code = str(e)
-        sucesso = False
-
-    resultado = {
-        "nome": nome,
-        "metodo": metodo,
-        "url": url,
-        "esperado": esperado,
-        "obtido": status_code,
-        "status": "Sucesso" if sucesso else "Falha"
-    }
-
-    return resultado
-
-# 🧾 Gera relatório HTML
-def gerar_relatorio_html(resultados, nome_arquivo="relatorio.html"):
-    html = """
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Relatório de Testes de Endpoints</title>
-        <style>
-            body { font-family: Arial; background: #f9f9f9; padding: 20px; }
-            h1 { color: #444; }
-            table { border-collapse: collapse; width: 100%; margin-top: 20px; }
-            th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
-            th { background-color: #eee; }
-            .sucesso { background-color: #c8e6c9; } /* Verde claro */
-            .falha { background-color: #ffcdd2; }   /* Vermelho claro */
-        </style>
-    </head>
-    <body>
-        <h1>Relatório de Testes de Endpoints</h1>
-        <table>
-            <tr>
-                <th>Nome</th>
-                <th>Método</th>
-                <th>URL</th>
-                <th>Esperado</th>
-                <th>Obtido</th>
-                <th>Resultado</th>
-            </tr>
-    """
-
-    for item in resultados:
-        classe = "sucesso" if item["status"] == "Sucesso" else "falha"
-        html += f"""
-        <tr class="{classe}">
-            <td>{item['nome']}</td>
-            <td>{item['metodo']}</td>
-            <td>{item['url']}</td>
-            <td>{item['esperado']}</td>
-            <td>{item['obtido']}</td>
-            <td>{item['status']}</td>
-        </tr>
-        """
-
-    html += """
-        </table>
-    </body>
-    </html>
-    """
-
-    with open(nome_arquivo, "w", encoding="utf-8") as f:
-        f.write(html)
-
-# 🚀 Executa os testes em todos os endpoints
-print("\n🔍 Testando endpoints:\n")
-for endpoint in dados:
-    resultado = executar_endpoint(endpoint)
-    resultados.append(resultado)
-    simbolo = "✅" if resultado["status"] == "Sucesso" else "❌"
-    print(f"{resultado['nome']}: {simbolo} {resultado['status']}")
-
-# 🖨️ Gera o relatório no final
-gerar_relatorio_html(resultados)
-print("\n📄 Relatório gerado: relatorio.html")
+        return {
+            "nome": nome,
+            "sucesso": False,
+            "mensagem": f"Erro: {str(e)}",
+            "obtido": None,
+            "esperado": esperado,
+            "comparacao": "--- → " + str(esperado),
+            "verificacao_extra": "❌ Erro na requisição"
+        }
