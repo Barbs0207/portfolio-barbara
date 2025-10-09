@@ -73,7 +73,7 @@ O relatório será gerado no histórico e poderá ser baixado em breve como arte
 ## 👩‍💻 Autora
 
 Desenvolvido por **Bárbara Filadelfo** — QA Engineer, apaixonada por qualidade, automação, pets e soluções inteligentes.  
-🔗 [LinkedIn](https://www.inkedin.com/in/barbara-filadelfo-150895237/)  
+🔗 [LinkedIn](https://www.linkedin.com/in/barbara-filadelfo-150895237/)  
 
 > 💼 Projeto feito como parte do portfólio profissional.
 
