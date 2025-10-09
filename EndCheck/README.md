@@ -1,87 +1,68 @@
-![Python](https://img.shields.io/badge/python-3.12-blue)
-![Pytest](https://img.shields.io/badge/tests-passing-brightgreen)
-![Status](https://img.shields.io/badge/relatorio-gerado-success)
+📝 README.md – Versão Atualizada
+# 🔍 Validação de Endpoints – Projeto em Python com GitHub Actions
 
-
-# ✅ EndCheck — Validador de Endpoints
-
-O **EndCheck** é um projeto desenvolvido para validar automaticamente a disponibilidade e o comportamento de **endpoints de APIs**.  
-Ele realiza chamadas HTTP, compara os **status esperados com os obtidos** e gera um **relatório em HTML** com os resultados.
+Este projeto realiza a **validação automática de endpoints HTTP** (GET, POST, PUT etc.) usando Python. É ideal para garantir que APIs estejam respondendo corretamente, com status esperados, e fornece um relatório HTML com os resultados.
 
 ---
 
-## 🔧 Funcionalidades
+## 🚀 Como executar localmente
 
-- Leitura de um arquivo `.json` com os endpoints
-- Suporte aos métodos `GET`, `POST`, `PUT`, `DELETE` (simulado)
-- Comparação entre código **esperado** e **obtido**
-- Mensagens coloridas no terminal para facilitar a leitura
-- Geração automática de **relatório visual em HTML**
-- Testes automatizados com `pytest`
-
----
-
-## 🖊️ Exemplo de Estrutura do `endpoints.json`
-
-```json
-[
-  {
-    "nome": "Google",
-    "metodo": "GET",
-    "url": "https://www.google.com",
-    "esperado": 200
-  },
-  {
-    "nome": "Criar Post",
-    "metodo": "POST",
-    "url": "https://jsonplaceholder.typicode.com/posts",
-    "esperado": 201
-  },
-  {
-    "nome": "Atualizar Post",
-    "metodo": "PUT",
-    "url": "https://jsonplaceholder.typicode.com/posts/1",
-    "esperado": 200
-  }
-]
-```
-
----
-
-## 🔧 Como Executar os Testes
-
-Os testes estão no arquivo `test_validador.py` e cobrem os principais fluxos da aplicação.
-
-### ✅ Para executar:
+1. Clone o repositório:
 ```bash
-python -m pytest test_validador.py
-```
+git clone https://github.com/Barbs0207/portfolio-barbara.git
+cd portfolio-barbara/EndCheck
 
----
 
-## 📁 Relatório HTML
+Crie um ambiente virtual (opcional, mas recomendado):
 
-Após a execução, um arquivo `relatorio.html` é gerado com o resultado de cada endpoint testado.
+python -m venv venv
+venv\Scripts\activate
 
-| Nome           | Método | URL                                           | Esperado | Obtido | Resultado |
-|----------------|--------|-----------------------------------------------|----------|--------|-----------|
-| Google         | GET    | https://www.google.com                        | 200      | 200    | Sucesso   |
-| Criar Post     | POST   | https://jsonplaceholder.typicode.com/posts   | 201      | 201    | Sucesso   |
-| Atualizar Post | PUT    | https://jsonplaceholder.typicode.com/posts/1 | 200      | 200    | Sucesso   |
 
-O relatório HTML é gerado com **cores que destacam erros e sucessos**, facilitando a leitura visual.
+Instale as dependências:
 
----
+pip install -r requirements.txt
 
-## 🚀 Futuras Melhorias
 
-- Suporte a autenticação com tokens (Bearer)
-- Validação de corpo da resposta (JSON schema)
-- Parâmetros dinâmicos e headers customizados
-- Execução paralela dos testes
+Execute o validador:
 
----
+python multichecker.py
 
-Com carinho,
-**Bárbara Filadelfo ✨**
 
+Ao final, um arquivo relatorio.html será gerado com o resultado dos testes.
+
+🤖 Validação Automática via GitHub Actions
+
+Este projeto possui um workflow CI para rodar automaticamente a verificação dos endpoints no GitHub:
+
+Acesse a aba Actions
+
+Clique em Validação de Endpoints
+
+Clique em Run Workflow
+
+O resultado aparecerá no histórico e poderá ser baixado em breve como artefato .html.
+
+📁 Estrutura do Projeto
+📦 EndCheck
+ ┣ 📄 endpoints.json            ← Lista de endpoints a validar
+ ┣ 📄 multichecker.py           ← Script principal de execução
+ ┣ 📄 validador.py              ← Função que realiza a requisição
+ ┗ 📄 relatorio.html            ← Relatório de resultados
+
+🧪 Tecnologias Usadas
+
+Python 3.13
+
+requests para chamadas HTTP
+
+json, datetime, html para estrutura e relatório
+
+GitHub Actions para CI/CD
+
+👩‍💻 Autora
+
+Desenvolvido por Bárbara Filadelfo – QA Engineer, apaixonada por qualidade, automação, pets e soluções inteligentes.
+🔗 www.linkedin.com/in/barbara-filadelfo-150895237
+
+💡 Projeto parte do portfólio profissional.
