@@ -28,7 +28,7 @@ jobs:
           python EndCheck/multichecker.py
 
       - name: Upload do relatório como artefato
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: relatorio-endpoints
           path: EndCheck/relatorio.html
