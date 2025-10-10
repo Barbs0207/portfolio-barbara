@@ -32,4 +32,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: relatorio-endpoints
-          path: EndCheck/relatorio.html
+          path: relatorio.html
+
+
