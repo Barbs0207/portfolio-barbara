@@ -12,11 +12,10 @@ resultados = []
 
 print("🔍 Iniciando validação dos endpoints...\n")
 
-# Conecta (ou cria) banco de dados SQLite
+# Conecta ou cria banco de dados SQLite
 conn = sqlite3.connect("historico_resultados.db")
 cursor = conn.cursor()
 
-# Cria tabela se não existir
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS historico (
         nome TEXT,
@@ -25,7 +24,7 @@ cursor.execute('''
     )
 ''')
 
-# Função para executar verificação extra (GET)
+# Verificação extra (como GET após POST)
 def executar_verificacao_extra(verificacao):
     try:
         tipo = verificacao.get("tipo", "GET")
@@ -45,10 +44,14 @@ def executar_verificacao_extra(verificacao):
     except Exception as e:
         return {"icone": "❌", "mensagem": f"Erro: {str(e)}"}
 
-
+# Executa cada endpoint
 for ep in endpoints:
     print(f"⏳ Testando: {ep['nome']} ...")
     resultado = executar_endpoint(ep)
+
+    # ✅ Inclui valor esperado no dicionário para o comparativo no relatório
+    resultado["esperado"] = ep.get("esperado", "---")
+
     verificacao_extra = ep.get("verificacao_extra")
 
     if resultado["sucesso"]:
@@ -56,9 +59,8 @@ for ep in endpoints:
     else:
         print(f"❌ Falha: {resultado['mensagem']}\n")
 
-    # Verificação extra se houver
+    # Verificação extra (se houver)
     if verificacao_extra:
-        # Se usar {{id}}, tentar extrair ID da resposta
         if "{{id}}" in verificacao_extra["url"]:
             try:
                 resposta = requests.post(ep["url"], json=ep.get("payload", {}))
@@ -69,7 +71,6 @@ for ep in endpoints:
                         verificacao_extra["url"] = verificacao_extra["url"].replace("{{id}}", str(id_criado))
             except:
                 pass
-
         resultado["verificacao_extra"] = executar_verificacao_extra(verificacao_extra)
     else:
         resultado["verificacao_extra"] = None
@@ -83,16 +84,30 @@ for ep in endpoints:
 conn.commit()
 conn.close()
 
-# Gera relatório HTML
+# Gera relatório HTML com estilo
 agora = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 html = f"""
 <html>
-<head><title>Relatório de Testes QA</title></head>
+<head>
+    <title>Relatório de Testes QA</title>
+    <style>
+        body {{ font-family: Arial, sans-serif; }}
+        table {{ border-collapse: collapse; width: 100%; margin-top: 20px; }}
+        th, td {{ border: 1px solid #ddd; padding: 8px; text-align: center; }}
+        th {{ background-color: #4CAF50; color: white; }}
+        tr:nth-child(even) {{ background-color: #f2f2f2; }}
+    </style>
+</head>
 <body>
-<h1>Relatório - {agora}</h1>
-<table border="1">
+<h1>Relatório de Validação de Endpoints</h1>
+<p>Gerado em: {agora}</p>
+<table>
 <tr>
-<th>Nome</th><th>Status</th><th>Mensagem</th><th>Comparativo</th><th>Verificação Extra</th>
+    <th>Nome</th>
+    <th>Status</th>
+    <th>Mensagem</th>
+    <th>Comparativo</th>
+    <th>Verificação Extra</th>
 </tr>
 """
 
