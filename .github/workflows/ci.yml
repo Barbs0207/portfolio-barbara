@@ -1,36 +1,33 @@
-  name: Analise de Falhas - CI
+name: Analise de Falhas - CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
-  workflow_dispatch:
+    branches: [main]
 
 jobs:
-  analisar:
+  run-qa-analysis:
     runs-on: ubuntu-latest
 
     steps:
-    - name: 📥 Clonar repositório
-      uses: actions/checkout@v3
+      - name: 📥 Checkout do repositório
+        uses: actions/checkout@v3
 
-    - name: 🐍 Instalar Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
-    - name: 📦 Instalar dependências (se houver)
-      run: |
-        pip install -r requirements.txt || echo "Sem requirements.txt, continuando..."
+      - name: 📦 Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: ⚙️ Rodar analisador
-      run: |
-        python src/analisador.py > resultado.log
-        echo "Relatório gerado."
+      - name: 🚀 Rodar Analisador de Falhas
+        run: |
+          python src/analisador.py
 
-    - name: 📤 Upload do relatório estratégico
-      uses: actions/upload-artifact@v3
-      with:
-        name: relatorio
-        path: relatorio_estrategico.md
+      - name: 📝 Gerar Relatório
+        run: |
+          python src/gerador_relatorio.py
