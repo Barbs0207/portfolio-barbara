@@ -1,4 +1,4 @@
-  name: Análise de Falhas - CI
+  name: Analise de Falhas - CI
 
 on:
   push:
