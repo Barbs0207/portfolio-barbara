@@ -1,20 +1,22 @@
-name: Analise de Falhas - CI
+name: CI - test_brain
 
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+    paths:
+      - '**.py'
+      - 'requirements.txt'
+      - '.github/workflows/**'
 
 jobs:
-  test_brain:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout do repositório
+      - name: 📥 Checkout do código
         uses: actions/checkout@v3
 
-      - name: 🐍 Setup Python
+      - name: 🐍 Instalar Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
@@ -24,10 +26,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 🚀 Rodar Analisador de Falhas
-        run: |
-          python src/analisador.py
+      - name: 🧠 Executar main.py
+        run: python main.py
 
-      - name: 📝 Gerar Relatório
+      - name: 📄 Verificar se o relatório foi gerado
         run: |
-          python src/gerador_relatorio.py
+          if [ -f "relatorio_inteligente.html" ]; then
+            echo "✅ Relatório gerado com sucesso."
+          else
+            echo "❌ Falha ao gerar relatório."
+            exit 1
