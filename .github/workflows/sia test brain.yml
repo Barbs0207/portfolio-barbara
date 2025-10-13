@@ -1,4 +1,4 @@
-name: Testes SIA-Test-Brain
+name: sia test brain
 
 on:
   push:
