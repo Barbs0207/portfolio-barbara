@@ -1,10 +1,7 @@
 # src/gerador_relatorio.py
 
-from src.analisador import analisar_falhas
+from .analisador import analisar_falhas
 from datetime import datetime
-
-caminho_db = "data/falhas.db"
-resultado = analisar_falhas(caminho_db)
 
 def gerar_md(insights, caminho_relatorio):
     agora = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
