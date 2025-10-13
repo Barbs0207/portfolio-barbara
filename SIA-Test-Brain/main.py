@@ -3,7 +3,7 @@
 from analisador import analisar_falhas
 from gerador_relatorio import gerar_md
 
-CAMINHO_DB = "data/falhas.db"
+CAMINHO_DB = "../data/historico_resultados.db" # <--- ATENÇÃO: Troquei para "historico_resultados.db"
 CAMINHO_RELATORIO = "reports/relatorio_estrategico.md"
 
 if __name__ == "__main__":
@@ -13,3 +13,4 @@ if __name__ == "__main__":
 
     gerar_md(insights, CAMINHO_RELATORIO)
     print(f"\n📄 Relatório salvo em: {CAMINHO_RELATORIO}")
+
