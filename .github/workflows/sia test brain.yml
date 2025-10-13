@@ -37,7 +37,7 @@ jobs:
 
       - name: 📄 Verificar se o relatório foi gerado
         run: |
-          if [ -f "relatorio_inteligente.html" ]; then
+          if [ -f "SIA-Test-Brain/reports/relatorio_inteligente.html" ]; then
             echo "✅ Relatório gerado com sucesso."
           else
             echo "❌ Falha ao gerar relatório."
