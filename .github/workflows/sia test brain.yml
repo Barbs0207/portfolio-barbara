@@ -25,10 +25,15 @@ jobs:
         run: pip install -r requirements.txt
         working-directory: SIA-Test-Brain
 
+      - name: Criar banco de dados de teste
+        run: python src/mock_data.py
+        working-directory: SIA-Test-Brain
+
       - name: Executar main.py
-        run: |
-          cd SIA-Test-Brain
-          python main.py
+        run: python main.py
+        working-directory: SIA-Test-Brain
+        env:
+          PYTHONPATH: SIA-Test-Brain/src
 
       - name: 📄 Verificar se o relatório foi gerado
         run: |
