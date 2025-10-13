@@ -1,9 +1,8 @@
-# src/main.py
+# main.py
 
-from analisador import analisar_falhas
-from gerador_relatorio import gerar_md
+from src.analisador import analisar_falhas
 
-CAMINHO_DB = "../data/falhas.db"
+CAMINHO_DB = "../data/falhas.db" # <--- ATENÇÃO: Troquei para "historico_resultados.db"
 CAMINHO_RELATORIO = "reports/relatorio_estrategico.md"
 
 if __name__ == "__main__":
@@ -11,7 +10,4 @@ if __name__ == "__main__":
     print("✅ Análise concluída:\n")
     print(insights)
 
-    gerar_md(insights, CAMINHO_RELATORIO)
-    print(f"\n📄 Relatório salvo em: {CAMINHO_RELATORIO}")
-
-
+  
