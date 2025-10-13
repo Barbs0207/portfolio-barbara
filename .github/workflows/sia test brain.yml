@@ -26,10 +26,9 @@ jobs:
         working-directory: SIA-Test-Brain
 
       - name: Executar main.py
-        run: python main.py
-        working-directory: SIA-Test-Brain
-        env:
-          PYTHONPATH: SIA-Test-Brain/src
+        run: |
+          cd SIA-Test-Brain
+          python main.py
 
       - name: 📄 Verificar se o relatório foi gerado
         run: |
