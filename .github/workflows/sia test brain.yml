@@ -28,6 +28,8 @@ jobs:
 
       - name: Executar main.py
         run: python SIA-Test-Brain/main.py
+        env:
+          PYTHONPATH: SIA-Test-Brain/src
 
       - name: 📄 Verificar se o relatório foi gerado
         run: |
