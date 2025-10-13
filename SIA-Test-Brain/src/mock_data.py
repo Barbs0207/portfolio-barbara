@@ -3,7 +3,7 @@
 import sqlite3
 import os
 
-db_path = "data/falhas.db"
+db_path = "../data/falhas.db"
 os.makedirs(os.path.dirname(db_path), exist_ok=True)
 
 conn = sqlite3.connect(db_path)
@@ -39,3 +39,4 @@ conn.commit()
 conn.close()
 
 print("✅ Dados fictícios inseridos no banco com sucesso.")
+
