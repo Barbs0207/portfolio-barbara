@@ -24,13 +24,15 @@ jobs:
       - name: Instalar dependências
         run: |
           python -m pip install --upgrade pip
-          pip install -r SIA-Test-Brain/requirements.txt
-
+          pip install -r requirements.txt
+        working-directory: SIA-Test-Brain
+        
       - name: Executar main.py
-        run: python SIA-Test-Brain/main.py
+        run: python main.py
+        working-directory: SIA-Test-Brain
         env:
-          PYTHONPATH: ${{ github.workspace }}/SIA-Test-Brain/src
-
+          PYTHONPATH: SIA-Test-Brain/src
+          
       - name: 📄 Verificar se o relatório foi gerado
         run: |
           if [ -f "relatorio_inteligente.html" ]; then
