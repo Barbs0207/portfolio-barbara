@@ -26,8 +26,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r SIA-Test-Brain/requirements.txt
 
-      - name: 🧠 Executar main.py
-        run: python main.py
+      - name: Executar main.py
+        run: python SIA-Test-Brain/main.py
 
       - name: 📄 Verificar se o relatório foi gerado
         run: |
