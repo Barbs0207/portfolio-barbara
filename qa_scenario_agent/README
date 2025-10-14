@@ -1,0 +1,142 @@
+# 🤖 QA Scenario Agent
+
+An intelligent QA agent that generates complete test scenarios in Xray format, using natural language input and a powerful AI backend. Built with Python, Gemini API and Streamlit.
+
+---
+
+## 🧠 What is it?
+The **QA Scenario Agent** is a smart assistant that takes a functional requirement as input and automatically generates a structured test scenario, including:
+
+- **Test Summary**
+- **Preconditions**
+- **Test Steps (as a table)**
+- **Expected Results**
+
+All in a format ready for import into **Xray** or use in QA documentation.
+
+---
+
+## 💡 Why this project?
+Writing test scenarios manually takes time — especially when it comes to formatting and structure. With the evolution of **AI agents**, we can now:
+
+- Save time on test documentation
+- Improve consistency in test writing
+- Support testers, POs and QA professionals with an intelligent helper
+
+This project demonstrates how real QA engineers can build practical AI agents to solve daily challenges.
+
+---
+
+## 🚀 Features
+
+- ✅ Natural language input (describe your requirement and let the AI do the rest)
+- ✅ Outputs structured test case in **Markdown** format
+- ✅ Built-in interface with **Streamlit** for ease of use
+- ✅ Button to download the generated test case
+- ✅ Supports English or Portuguese (based on input)
+
+---
+
+## 🧰 Tech Stack
+
+- **Python**
+- **Gemini API** (Google Generative AI)
+- **Streamlit**
+- **Markdown** (output format)
+
+---
+
+## 📸 Screenshots
+
+![App Interface](screenshots/interface.png)
+
+![Generated Test Case](screenshots/test_case.png)
+
+---
+
+## 🧪 How to Run Locally
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/seuusuario/qa-scenario-agent.git
+cd qa-scenario-agent
+```
+
+### 2. Create a virtual environment (optional but recommended)
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Set your Gemini API key
+Create a `.env` file with:
+```
+GEMINI_API_KEY=your_api_key_here
+```
+
+Or export it directly:
+```bash
+export GEMINI_API_KEY=your_api_key_here
+```
+
+### 5. Run the app
+```bash
+streamlit run app.py
+```
+
+---
+
+## 📁 Project Structure
+```
+qa-scenario-agent/
+├── app.py              # Main Streamlit app
+├── prompt_engine.py    # Prompt logic and Gemini integration
+├── requirements.txt
+├── screenshots/
+│   ├── interface.png
+│   └── test_case.png
+└── .env.example        # Example for environment variables
+```
+
+---
+
+## 📦 Planned Improvements
+
+- [ ] Add support for multiple scenario formats (Zephyr, Gherkin, etc.)
+- [ ] Allow customization of output structure
+- [ ] Enable saving scenarios in .docx or PDF
+- [ ] Add tests and CI workflow
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! If you’d like to contribute:
+
+1. Fork the repo
+2. Create your feature branch
+3. Commit your changes
+4. Push and open a PR 🚀
+
+---
+
+## 👩‍💻 Author
+
+Created with 💙 by [Bárbara Filadelfo](https://www.linkedin.com/in/barbara-filadelfo-150895237)
+
+---
+
+## 📜 License
+MIT License.
+
+---
+
+## 📬 Let’s Connect!
+If you're curious about QA, automation, intelligent agents or just want to share ideas — feel free to connect!
+
+---
