@@ -1,0 +1,34 @@
+Display a success popup after order submission informing that orders are being created in SAP and that order IDs will be emailed.
+
+
+Descrição
+
+As a customer, I want to see a success message after submitting orders, so that I know my order is being processed and that I will receive order IDs by email.
+
+Details
+After submitting orders, customers need immediate confirmation that the action was successful. A clear success message reassures users that the system has received their orders and is processing them. This feedback loop is essential for building trust and preventing repeated submissions. Additionally, informing the customer that order IDs will be sent via email helps set expectations and supports a seamless post-submission experience.
+
+The success message should be displayed only after the system has validated the data, successfully submitted the orders, and confirmed SAP integration. 
+
+Expected Benefits
+Confirms successful submission and prevents user confusion
+
+Enhances trust and transparency in the order process
+
+Reduces support inquiries by setting clear expectations
+
+Improves user experience with timely feedback and guidance
+
+Mockup Example
+image-20250929-050843.png
+Acceptance Criteria
+
+After successful order submission, the system must display a success message to the user.
+
+The message must confirm that the orders were submitted and are being processed.
+
+The message must inform the user that order IDs will be sent to their registered email address.
+
+The message must only appear after all validations and SAP integration have initiated successfully.
+
+The message must be clearly visible and accessible on all supported devices.
