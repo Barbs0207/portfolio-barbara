@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestWhisper Evidence</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>TestWhisper Evidence</h1>
+    <p>Coletor profissional de evidências de QA</p>
+</header>
+
+<section id="config">
+    <h2>Configurações do Teste</h2>
+    <p style="font-size:13px; color:#666;">
+        Use "<strong>Nova Configuração</strong>" para começar outra seção sem perder as anteriores.
+    </p>
+
+    <label>Tarefa / User Story:</label>
+    <input id="tarefa">
+
+    <label>Executor (quem testou):</label>
+    <input id="executor">
+
+    <label>Ambiente:</label>
+    <input id="ambiente">
+
+    <label>Navegador:</label>
+    <input id="navegador" placeholder="Ex: Chrome 129">
+
+    <label>Sistema Operacional:</label>
+    <input id="so" placeholder="Ex: Windows 11">
+
+    <label>Iteração / Sprint:</label>
+    <input id="sprint">
+
+    <label>Tags (separe por vírgula):</label>
+    <input id="tags" placeholder="login, regressivo, front">
+
+    <label>Pré-requisitos:</label>
+    <textarea id="pre"></textarea>
+
+    <label>Cenário de teste:</label>
+    <textarea id="cenario"></textarea>
+
+    <div style="display:flex; gap:10px; margin-top:15px;">
+        <button id="btnSalvarCfg" class="pill">Salvar Configuração</button>
+        <button id="btnCancelar" class="pill">Cancelar</button>
+        <button id="btnLimpar" class="pill">Limpar</button>
+        <button id="btnNovaCfg" class="pill">+ Nova Configuração</button>
+    </div>
+</section>
+
+<section>
+    <h3 id="secaoAtivaInfo" style="margin-top:20px; padding:10px; background:#eee; border-radius:8px;">
+        Nenhuma seção ativa
+    </h3>
+</section>
+
+<section id="captura">
+    <button id="capturarBtn">Capturar Screenshot</button>
+    <button id="importarBtn">Importar imagem (upload / arrastar / colar)</button>
+</section>
+
+<section id="galeria">
+    <h2>Galeria de Evidências</h2>
+    <div id="listaEvidencias"></div>
+</section>
+
+<section id="relatorios">
+    <h2>Gerar Relatórios</h2>
+    <button id="gerarPdf">PDF</button>
+    <button id="btnLimparTudo" style="background:#b00020; margin-top:20px;">
+    Limpar Tudo
+</button>
+
+    <button id="gerarMd">Markdown</button>
+    <button id="gerarJson">JSON</button>
+    <button id="btnLimparTudo" style="background:#b00020; margin-top:20px;">
+    Limpar Tudo
+</button>
+
+    <button id="gerarTxt">Texto Simples</button>
+</section>
+
+<footer>
+    <p>TestWhisper Evidence — desenvolvido por Bárbara ❤️</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

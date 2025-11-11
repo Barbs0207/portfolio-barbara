@@ -1,0 +1,172 @@
+/* ===============================
+   BASE / RESET
+=============================== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f2f2f2;
+    color: #333;
+}
+
+/* ===============================
+   HEADER
+=============================== */
+header {
+    background: #1f1f1f;
+    color: #fff;
+    padding: 25px 10px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+header p {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    opacity: .85;
+}
+
+/* ===============================
+   SEÇÕES
+=============================== */
+section {
+    background: #fff;
+    margin: 20px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+/* ===============================
+   FORMULÁRIOS
+=============================== */
+label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input, select, textarea, button {
+    margin-top: 6px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+button {
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: bold;
+    border: none;
+}
+
+button:hover {
+    background: #555;
+}
+
+/* ===============================
+   GALERIA
+=============================== */
+#listaEvidencias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 20px;
+    justify-content: flex-start;
+}
+
+/* ===============================
+   CARD DA EVIDÊNCIA
+=============================== */
+.card-evidencia {
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    transition: 0.2s;
+}
+
+.card-evidencia:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.20);
+}
+
+/* IMAGEM */
+.card-evidencia .thumb {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+/* INFO */
+.card-evidencia .info p {
+    margin: 4px 0;
+    font-size: 13px;
+    color: #444;
+}
+
+/* ===============================
+   BOTÕES INTERNOS DOS CARDS
+=============================== */
+.card-evidencia button {
+    width: auto;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.card-evidencia button[data-action="excluir"] {
+    background: #b30707;
+}
+
+.card-evidencia button[data-action="excluir"]:hover {
+    background: #d40000;
+}
+
+.card-evidencia button[data-action="download"] {
+    background: #0b5ed7;
+}
+
+.card-evidencia button[data-action="download"]:hover {
+    background: #0a53be;
+}
+
+/* ===============================
+   CORES POR TIPO DE EVIDÊNCIA
+=============================== */
+.card-evidencia.pass     { border-left: 6px solid #4CAF50; } /* verde */
+.card-evidencia.bug      { border-left: 6px solid #e53935; } /* vermelho */
+.card-evidencia.info     { border-left: 6px solid #1e88e5; } /* azul */
+.card-evidencia.improvement { border-left: 6px solid #ffb300; } /* amarelo */
+
+/* ===============================
+   RODAPÉ
+=============================== */
+footer {
+    background: #1f1f1f;
+    color: #ccc;
+    padding: 15px;
+    text-align: center;
+    font-size: 12px;
+}

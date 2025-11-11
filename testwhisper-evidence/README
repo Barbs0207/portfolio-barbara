@@ -1,0 +1,150 @@
+# 🐾 TestWhisper Evidence  
+
+**Coletor profissional de evidências de QA — rápido, organizado e eficiente**
+
+O **TestWhisper Evidence** é uma ferramenta leve, 100% client-side, criada para facilitar o trabalho de Analistas de QA que precisam registrar evidências de testes de forma rápida, padronizada e organizada.
+
+Feito para reduzir o tempo gasto com documentação, permitindo capturar, importar ou colar prints diretamente na ferramenta, organizá-los por seções e gerar relatórios profissionais em **PDF** ou **JSON**.
+
+---
+
+## 🎯 Objetivo
+
+O TestWhisper Evidence foi desenvolvido para:
+
+- Simplificar a documentação de testes  
+- Centralizar e organizar evidências por cenário  
+- Permitir capturas rápidas (print + colagem + upload)  
+- Gerar relatórios profissionais prontos para anexar em Jira, Azure DevOps, Trello ou e-mail  
+- Reduzir trabalho manual de quem testa diariamente  
+
+---
+
+## ✨ Funcionalidades
+
+### ✅ **Organização por Seções**
+Cada seção representa um cenário ou caso de teste, contendo:
+- Executor  
+- Ambiente  
+- Navegador  
+- Sistema Operacional  
+- Sprint / Iteração  
+- Tags  
+- Pré-requisitos  
+- Cenário  
+
+### ✅ **Captura Prática**
+- Captura de tela automática via `html2canvas`
+- Upload de arquivos PNG/JPG
+- Colagem direta do clipboard (CTRL + V)
+- Galeria por seção
+
+### ✅ **Relatórios Profissionais**
+- **PDF A4 – Modo Paisagem**
+  - 2 evidências por página, lado a lado
+  - Layout limpo e corporativo
+  - Cabeçalho estruturado
+- **JSON**
+  - Exporta todo o conjunto de seções e evidências
+
+### ✅ **Gerenciamento Simples**
+- Criar nova seção
+- Limpar formulário
+- Cancelar edição
+- Definir seção ativa
+- Botão **Limpar Tudo** para reset geral
+
+### ✅ **100% Local**
+- Sem servidor
+- Sem backend
+- Sem enviar dados à internet
+- Tudo salvo no `localStorage` do navegador
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **HTML5**
+- **CSS3**
+- **JavaScript ES6+**
+- `html2canvas` – para captura da tela  
+- `jsPDF` – para geração do PDF  
+- LocalStorage – para persistência local  
+
+---
+
+## 📦 Estrutura do Projeto
+
+/TestWhisper-Evidence
+│
+├── index.html # Interface principal
+├── style.css # Estilos e layout
+├── script.js # Lógica da aplicação
+├── README.md # Este documento
+└── /assets (opcional) # Imagens, ícones, etc
+
+
+---
+
+## 🚀 Como Usar
+
+### 1. Abra o projeto
+Basta abrir o arquivo **index.html** no navegador.
+
+### 2. Crie uma nova configuração
+Preencha:
+- Executor  
+- Ambiente  
+- Navegador  
+- SO  
+- Sprint  
+- Tags  
+- Pré-requisitos  
+- Cenário  
+
+Clique em **Salvar Configuração**.
+
+### 3. Capture ou importe evidências
+- **Capturar** → botão "Capturar Screenshot"  
+- **Importar** → botão "Importar Imagem"  
+- **Colar** → CTRL + V  
+
+### 4. Gere o relatório
+- Clique em **Gerar PDF**
+- Escolha também o **JSON** caso queira integrações
+
+### 5. Limpar os dados
+Use **Limpar Tudo** quando quiser começar um relatório novo.
+
+---
+
+## 📝 Exemplo de PDF (Paisagem, 2 imagens por página)
+
+- Página 1 → Dados da seção  
+- Página 2 → Evidência #1 e #2  
+- Página 3 → Evidência #3 e #4  
+- etc.
+
+Relatório pronto para anexar no Jira ou enviar para líderes.
+
+---
+
+## 🔒 Privacidade e Segurança
+
+✅ Nenhum dado deixa seu computador  
+✅ Funciona offline  
+✅ Sem APIs externas  
+✅ Armazenado apenas no LocalStorage  
+
+---
+
+## 👩‍💻 Autoria
+
+Desenvolvido com dedicação por **Bárbara**  
+Criado para facilitar a rotina de QA e acelerar o fluxo de documentação.
+
+---
+
+## 📄 Licença
+MIT License  
+Sinta-se livre para usar, modificar e evoluir.
