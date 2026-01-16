@@ -17,7 +17,6 @@ def gerar_cenario_ia(requisito_texto):
 
     prompt = f"""
 Você é um engenheiro de QA que transforma requisitos funcionais em cenários de teste no formato Xray.
-... (rest of your prompt code)
 """
 
     # Altera o nome do modelo para a versão mais atual
@@ -26,5 +25,6 @@ Você é um engenheiro de QA que transforma requisitos funcionais em cenários d
     # Usa chat (compatível com v1beta)
     chat = model.start_chat()
     response = chat.send_message(prompt)
+
 
     return response.text.strip()
